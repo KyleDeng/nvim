@@ -1,5 +1,5 @@
 插件推荐：
-https://github.com/rockerBOO/awesome-neovim#comment
+https://github.com/rockerBOO/awesome-neovim
 主题推荐：
 https://vimcolorschemes.com/
 
@@ -31,3 +31,8 @@ lsp和coc选择python插件的时候选择pyright
 ~/.local/share/nvim/lazy/bufferline.nvim/lua/bufferline/pick.lua
 大概28行左右
 if element and (letter == element.letter or letter == tostring(element.ordinal)) then func(element.id) end
+
+当切换了主题后，就不能正常使用选词高亮的功能
+需要在这个地方配置默认主题（希望后面可以解决这个问题）
+~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/config/init.lua : 10
+改成 colorscheme = "everforest",

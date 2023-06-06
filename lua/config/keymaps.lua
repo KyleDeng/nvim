@@ -29,10 +29,23 @@ wk.register({
     name = "+K setting",
   },
 })
-map("n", "<leader>ku", "vvgu", { desc = "lower case word", remap = true }) --小写
-map("n", "<leader>kU", "vvgU", { desc = "upper case word", remap = true }) --大写
+map("n", "<leader>ku", "vawgu", { desc = "lower case word", remap = true }) --小写
+map("n", "<leader>kU", "vawU", { desc = "upper case word", remap = true }) --大写
 map("n", "<leader>kr", "<cmd>e!<CR>", { desc = "refresh", remap = true }) --刷新
 map("n", "<leader>ka", "ggVG", { desc = "select all", remap = true }) --全选
+map("n", "<leader>kl", "<cmd>noh<cr><esc>", { desc = "No highlight", remap = true }) --取消高亮
+
+--Doxygen
+wk.register({
+  ["<leader>kd"] = {
+    name = "+doxygen",
+  },
+})
+map("n", "<leader>kdd", "<cmd>Dox<CR>", { desc = "Dox", remap = true })
+map("n", "<leader>kda", "<cmd>DoxAuthor<CR>", { desc = "DoxAuthor", remap = true })
+map("n", "<leader>kdl", "<cmd>DoxLic<CR>", { desc = "DoxLic", remap = true })
+map("n", "<leader>kdu", "<cmd>DoxUndoc<CR>", { desc = "DoxUndoc", remap = true })
+map("n", "<leader>kdb", "<cmd>DoxBlock<CR>", { desc = "DoxBlock", remap = true })
 
 --bin文件
 wk.register({
@@ -149,3 +162,8 @@ map("n", "<leader>gl", "<cmd>BlamerToggle<cr>", { desc = "On/Off Blamer" })
 
 --terminal
 map("n", "<leader>'", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = "Toggle Terminal" })
+
+--取消默认的一些
+map({ "i", "n" }, "<esc>", "<esc>", { desc = "Escape and clear hlsearch", remap = true })
+map({ "i", "v", "n" }, "<A-j>", "j", { desc = "Move down", remap = true })
+map({ "i", "v", "n" }, "<A-k>", "k", { desc = "Move up", remap = true })

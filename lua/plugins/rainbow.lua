@@ -40,49 +40,17 @@ return {
       },
       rainbow = {
         enable = true,
-        -- list of languages you want to disable the plugin for
-        -- disable = { "jsx", "cpp" },
-        -- Which query to use for finding delimiters
-        -- query = "rainbow-parens",
-        -- Highlight the entire buffer all at once
-        -- strategy = require("ts-rainbow").strategy.global,
-        colors = {
-          "#999999",
-          "#cc241d",
-          "#a89984",
-          "#b16286",
-          "#d79921",
-          "#689d6a",
-          "#d65d0e",
-          "#458588",
+        hlgroups = {
+          -- The colours are intentionally not in the usual order to make
+          -- the contrast between them stronger
+          "TSRainbowCyan",
+          "TSRainbowYellow",
+          "TSRainbowBlue",
+          "TSRainbowOrange",
+          "TSRainbowGreen",
+          "TSRainbowViolet",
+          "TSRainbowRed",
         },
-        termcolors = {
-          "Red",
-          "Green",
-          "Yellow",
-          "Blue",
-          "Magenta",
-          "Cyan",
-          "White",
-        },
-        -- colors = {
-        --   "#999999",
-        --   "#8CCBEA",
-        --   "#A4E57E",
-        --   "#FFDB72",
-        --   "#FF7272",
-        --   "#FFB3FF",
-        --   "#9999FF",
-        -- },
-        -- termcolors = {
-        --   "#111111",
-        --   "#8CCBEA",
-        --   "#A4E57E",
-        --   "#FFDB72",
-        --   "#FF7272",
-        --   "#FFB3FF",
-        --   "#9999FF",
-        -- },
       },
     },
   },

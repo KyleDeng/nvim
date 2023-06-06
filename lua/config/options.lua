@@ -7,3 +7,10 @@ opt.shiftwidth = 4 -- Size of an indent
 opt.tabstop = 4 -- Number of spaces tabs count for
 opt.wrap = true -- Disable line wrap
 opt.smartindent = true
+
+--Doxygen
+vim.g.DoxygenToolkit_commentType = "C"
+vim.g.doxygen_enhanced_color = 1
+vim.g.DoxygenToolkit_briefTag_funcName = "yes"
+vim.g.DoxygenToolkit_authorName = "huatuo"
+vim.g.DoxygenToolkit_versionString = "1.0.0"

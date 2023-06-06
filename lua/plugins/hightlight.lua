@@ -5,7 +5,7 @@ return {
     opts = {
       colors = { "#8CCBEA", "#A4E57E", "#FFDB72", "#FF7272", "#FFB3FF", "#9999FF" },
       search_count = true,
-      navigation = true,
+      navigation = false,
       search_key = ",m",
       cancel_search_key = ",M",
       color_key = ",k",

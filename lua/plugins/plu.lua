@@ -57,6 +57,7 @@ return {
     },
   },
   {
+    -- Bufferline加上序号
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",

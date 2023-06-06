@@ -46,4 +46,8 @@ return {
       post_hook = nil,
     },
   },
+  {
+    --添加Doxygen格式注释
+    "vim-scripts/DoxygenToolkit.vim",
+  },
 }
