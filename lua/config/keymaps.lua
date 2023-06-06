@@ -1,0 +1,151 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+-- Move to window using the <ctrl> hjkl keys
+
+-- This file is automatically loaded by lazyvim.config.init
+local Util = require("lazyvim.util")
+local wk = require("which-key")
+
+local function map(mode, lhs, rhs, opts)
+  local keys = require("lazy.core.handler").handlers.keys
+  ---@cast keys LazyKeysHandler
+  -- do not create the keymap if a lazy keys handler exists
+  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    if opts.remap and not vim.g.vscode then
+      opts.remap = nil
+    end
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
+end
+
+--通用
+map("n", ",p", '"*p', { desc = "Yank paste" })
+map("n", ",y", '"*y', { desc = "Yank copy" })
+wk.register({
+  ["<leader>k"] = {
+    name = "+K setting",
+  },
+})
+map("n", "<leader>ku", "vvgu", { desc = "lower case word", remap = true }) --小写
+map("n", "<leader>kU", "vvgU", { desc = "upper case word", remap = true }) --大写
+map("n", "<leader>kr", "<cmd>e!<CR>", { desc = "refresh", remap = true }) --刷新
+map("n", "<leader>ka", "ggVG", { desc = "select all", remap = true }) --全选
+
+--bin文件
+wk.register({
+  ["<leader>kb"] = {
+    name = "+bin",
+  },
+})
+map("n", "<leader>kbb", "<cmd>%!xxd<CR>", { desc = "2hex", remap = true }) --hex
+map("n", "<leader>kbr", "<cmd>%!xxd -r<CR>", { desc = "2bin", remap = true }) --bin
+
+--寄存器
+wk.register({
+  ["<leader>r"] = {
+    name = "+register",
+  },
+})
+map("n", "<leader>rr", "<cmd>reg<CR>", { desc = "all reg", remap = true })
+
+--跳转
+wk.register({
+  ["<leader>j"] = {
+    name = "+jump",
+  },
+})
+map("n", "<A-1>", "gD", { desc = "Goto Definition", remap = true })
+map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
+map("n", "<leader>jj", "<C-W>sgD", { desc = "Goto definition below", remap = true }) --水平分割跳转
+map("n", "<leader>jv", "<C-W>vgD", { desc = "Goto definition right", remap = true }) --垂直分割跳转
+
+--折叠
+wk.register({
+  ["<leader>z"] = {
+    name = "+Fold",
+  },
+})
+map("n", "<leader>zm", "<cmd>set fdm=manual<CR>", { desc = "manual", remap = true }) --手动
+map("n", "<leader>zi", "<cmd>set fdm=indent<CR>", { desc = "indent", remap = true }) --缩进
+map("n", "<leader>ze", "<cmd>set fdm=expr<CR>", { desc = "expr", remap = true }) --表达式
+map("n", "<leader>zs", "<cmd>set fdm=syntax<CR>", { desc = "syntax", remap = true }) --语法
+map("n", "<leader>zd", "<cmd>set fdm=diff<CR>", { desc = "diff", remap = true }) --差异
+
+--差异对比
+wk.register({
+  ["<leader>d"] = {
+    name = "+Diff",
+  },
+})
+map("n", "<leader>dd", "<cmd>difft<CR>", { desc = "diff this", remap = true }) --选中比对文件
+map("n", "<leader>do", "<cmd>diffo<CR>", { desc = "diff off", remap = true }) --关闭比对
+map("n", "<leader>dp", "dp", { desc = "diff push", remap = true }) --同步到另一个文件
+map("n", "<leader>dg", "dg", { desc = "diff get", remap = true }) --从另一个文件同步
+
+--错误检查
+wk.register({
+  ["<leader>e"] = {
+    name = "+Error",
+  },
+})
+wk.register({
+  ["<leader>ec"] = {
+    name = "+coc",
+  },
+})
+wk.register({
+  ["<leader>el"] = {
+    name = "+lsp",
+  },
+})
+map("n", "<leader>ee", "<cmd>CocEnable<cr><cmd>LspStart<cr>", { desc = "CheckEnable" })
+map("n", "<leader>ed", "<cmd>CocDisable<cr><cmd>LspStop<cr>", { desc = "CheckDisable" })
+--coc
+map("n", "<leader>eci", "<cmd>CocList marketplace<cr>", { desc = "Coc Marketplace" })
+map("n", "<leader>ece", "<cmd>CocEnable<cr>", { desc = "CocEnable" })
+map("n", "<leader>ecd", "<cmd>CocDisable<cr>", { desc = "CocDisable" })
+--lsp
+map("n", "<leader>eli", "<cmd>LspInstall<cr>", { desc = "LspInstall" })
+map("n", "<leader>ele", "<cmd>LspStart<cr>", { desc = "LspStart" })
+map("n", "<leader>eld", "<cmd>LspStop<cr>", { desc = "LspStop" })
+
+--窗口操作
+map("n", "sv", "<C-w>s", { desc = "Split window below", remap = true })
+map("n", "sg", "<C-w>v", { desc = "Split window right", remap = true })
+map("n", "<leader>wh", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window", remap = true })
+
+--Buffer切换
+map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" })
+map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+--文件路径
+map("n", "<leader>fy", "<cmd>echo expand('%:p')<CR>", { desc = "Show file path" })
+map("n", "<leader>fY", "<cmd>let @+ = expand('%:p')<CR>", { desc = "Show file path" })
+
+--align
+wk.register({
+  ["<leader>a"] = {
+    name = "+align",
+  },
+})
+
+--outline
+wk.register({
+  ["<leader>o"] = {
+    name = "+outline",
+  },
+})
+map("n", "<leader>oo", ":SymbolsOutline<CR>", { desc = "SymbolsOutline" })
+map("n", "<leader>oc", "<cmd>CocOutline<cr>", { desc = "Coc Outline" })
+
+--git blame
+map("n", "<leader>gl", "<cmd>BlamerToggle<cr>", { desc = "On/Off Blamer" })
+
+--terminal
+map("n", "<leader>'", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = "Toggle Terminal" })

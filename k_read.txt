@@ -1,0 +1,31 @@
+插件推荐：
+https://github.com/rockerBOO/awesome-neovim#comment
+主题推荐：
+https://vimcolorschemes.com/
+
+使用系统剪贴板
+sudo apt install xclip
+
+使用grep功能
+sudo apt-get install ripgrep
+
+使用coc插件，需要更新node，编译coc
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install n -g
+sudo n stable
+cd ~/.local/share/nvim/lazy/coc.nvim
+yarn install
+yarn build
+sudo apt-get install clangd
+coc安装可视化插件：":CocInstall coc-marketplace"
+打开面板：":CocList marketplace"
+搜索相关子插件：":CocList marketplace python"
+
+lsp和coc选择python插件的时候选择pyright
+
+
+为了能够使用bufferline的按序号选择的功能，需要改动以下文件
+~/.local/share/nvim/lazy/bufferline.nvim/lua/bufferline/pick.lua
+大概28行左右
+if element and (letter == element.letter or letter == tostring(element.ordinal)) then func(element.id) end
