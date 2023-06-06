@@ -14,6 +14,8 @@ curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install n -g
 sudo n stable
+sudo npm install -g yarn
+(sudo apt remove cmdtest; sudo apt remove yarn)
 cd ~/.local/share/nvim/lazy/coc.nvim
 yarn install
 yarn build
