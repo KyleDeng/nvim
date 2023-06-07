@@ -22,8 +22,8 @@ local function map(mode, lhs, rhs, opts)
 end
 
 --通用
-map("n", ",p", '"*p', { desc = "Yank paste" })
-map("n", ",y", '"*y', { desc = "Yank copy" })
+map({ "n", "v" }, ",p", '"*p', { desc = "Yank paste" })
+map({ "n", "v" }, ",y", '"*y', { desc = "Yank copy" })
 wk.register({
   ["<leader>k"] = {
     name = "+K setting",
@@ -133,9 +133,15 @@ map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window", remap = true })
 map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window", remap = true })
 map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window", remap = true })
 
---Buffer切换
-map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" })
-map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+--buffer
+map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" }) --选择buffer
+map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" }) --选择上一个使用的buffer
+map(
+  "n",
+  "<leader>bq",
+  "<cmd>BufferLinePin<cr><cmd>BufferLineGroupClose ungrouped<cr>",
+  { desc = "Pin and close other" }
+) --quiet模式
 
 --文件路径
 map("n", "<leader>fy", "<cmd>echo expand('%:p')<CR>", { desc = "Show file path" })
@@ -162,6 +168,9 @@ map("n", "<leader>gl", "<cmd>BlamerToggle<cr>", { desc = "On/Off Blamer" })
 
 --terminal
 map("n", "<leader>'", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = "Toggle Terminal" })
+
+--greeter
+-- map("n", "<leader><space>", "<cmd>Alpha<CR>", { desc = "Alpha greeter", remap = true })
 
 --取消默认的一些
 map({ "i", "n" }, "<esc>", "<esc>", { desc = "Escape and clear hlsearch", remap = true })

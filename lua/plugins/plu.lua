@@ -69,4 +69,18 @@ return {
       },
     },
   },
+  --修改默认的一些按键映射
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      -- { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
+      { "<leader><space>", "<cmd>Alpha<cr>", desc = "Alpha greeter" },
+    },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "<leader>e", "", desc = "Explorer NeoTree (root dir)", remap = true },
+    },
+  },
 }
