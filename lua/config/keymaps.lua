@@ -23,6 +23,7 @@ end
 
 --通用
 map({ "n", "v" }, ",p", '"*p', { desc = "Yank paste" })
+map({ "n", "v" }, ",P", '"*P', { desc = "Yank paste" })
 map({ "n", "v" }, ",y", '"*y', { desc = "Yank copy" })
 wk.register({
   ["<leader>k"] = {
@@ -70,7 +71,7 @@ wk.register({
     name = "+jump",
   },
 })
-map("n", "<A-1>", "gD", { desc = "Goto Definition", remap = true })
+map("n", "<A-1>", "gd", { desc = "Goto Definition", remap = true })
 map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
 map("n", "<leader>jj", "<C-W>sgD", { desc = "Goto definition below", remap = true }) --水平分割跳转
 map("n", "<leader>jv", "<C-W>vgD", { desc = "Goto definition right", remap = true }) --垂直分割跳转

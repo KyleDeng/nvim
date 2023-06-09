@@ -4,6 +4,12 @@ return {
     "neoclide/coc.nvim",
   },
   {
+    --切换输入法
+    "lilydjwg/fcitx.vim",
+    --这里配置了好像不生效，需要到~/.local/share/nvim/lazy/fcitx.vim 里面git checkout 1.2.5
+    version = "1.2.5",
+  },
+  {
     -- 光标单词加下划线
     "itchyny/vim-cursorword",
   },
