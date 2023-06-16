@@ -71,7 +71,7 @@ wk.register({
     name = "+jump",
   },
 })
-map("n", "<A-1>", "gd", { desc = "Goto Definition", remap = true })
+map("n", "<A-1>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition", remap = true })
 map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
 map("n", "<leader>jj", "<C-W>sgD", { desc = "Goto definition below", remap = true }) --水平分割跳转
 map("n", "<leader>jv", "<C-W>vgD", { desc = "Goto definition right", remap = true }) --垂直分割跳转
@@ -135,6 +135,12 @@ map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window", remap = true })
 map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window", remap = true })
 
 --buffer
+for i = 1, 9, 1 do
+  map("n",
+    string.format(",%d", i),
+    string.format(":BufferLineGoToBuffer %d<CR>", i),
+    { desc = string.format("Goto buffer %d", i) }) --快速跳转buffer
+end
 map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" }) --选择buffer
 map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" }) --选择上一个使用的buffer
 map(
