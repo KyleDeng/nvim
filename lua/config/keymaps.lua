@@ -73,8 +73,9 @@ wk.register({
 })
 map("n", "<A-1>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition", remap = true })
 map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
-map("n", "<leader>jj", "<C-W>sgD", { desc = "Goto definition below", remap = true }) --水平分割跳转
-map("n", "<leader>jv", "<C-W>vgD", { desc = "Goto definition right", remap = true }) --垂直分割跳转
+map("n", "<A-3>", "<C-i>", { desc = "Goto Forward", remap = true })
+map("n", "<leader>jj", "<C-W>s<esc>gd", { desc = "Goto definition below", remap = true }) --水平分割跳转
+map("n", "<leader>jv", "<C-W>v<esc>gd", { desc = "Goto definition right", remap = true }) --垂直分割跳转
 
 --折叠
 wk.register({
@@ -141,6 +142,7 @@ for i = 1, 9, 1 do
     string.format(":BufferLineGoToBuffer %d<CR>", i),
     { desc = string.format("Goto buffer %d", i) }) --快速跳转buffer
 end
+map("n", "<leader>bn", ":enew<CR>", { desc = "New empty buffer" }) --新建空buffer
 map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" }) --选择buffer
 map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" }) --选择上一个使用的buffer
 map(
@@ -181,5 +183,5 @@ map("n", "<leader>'", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = "Toggle T
 
 --取消默认的一些
 map({ "i", "n" }, "<esc>", "<esc>", { desc = "Escape and clear hlsearch", remap = true })
-map({ "i", "v", "n" }, "<A-j>", "j", { desc = "Move down", remap = true })
+map({ "i", "v", "n" }, "<A-j>", "j", { desc = "Move down", remap = true })  --会和Esc有冲突
 map({ "i", "v", "n" }, "<A-k>", "k", { desc = "Move up", remap = true })
