@@ -21,10 +21,11 @@ yarn install
 yarn build
 sudo apt-get install clangd
 coc安装可视化插件：":CocInstall coc-marketplace"
+(通过":CocUninstall pyright"可卸载插件)
 打开面板：":CocList marketplace"
 搜索相关子插件：":CocList marketplace python"
 
-lsp和coc选择python插件的时候选择pyright
+lsp和coc选择python插件的时候选择pyls
 
 
 当切换了主题后，就不能正常使用选词高亮的功能
