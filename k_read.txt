@@ -27,6 +27,8 @@ coc安装可视化插件：":CocInstall coc-marketplace"
 
 lsp和coc选择python插件的时候选择pyls
 
+安装lsp里面的pyls的时候(leader c m)，需要先安装Python env
+(sudo apt update; sudo apt install python3.8-venv)
 
 当切换了主题后，就不能正常使用选词高亮的功能
 需要在这个地方配置默认主题（希望后面可以解决这个问题）
