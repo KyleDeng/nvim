@@ -8,6 +8,9 @@ opt.tabstop = 4 -- Number of spaces tabs count for
 opt.wrap = true -- Disable line wrap
 opt.smartindent = true
 
+-- Enable LazyVim auto format
+vim.g.autoformat = false
+
 --Doxygen
 vim.g.DoxygenToolkit_commentType = "C"
 vim.g.doxygen_enhanced_color = 1
