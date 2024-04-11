@@ -48,6 +48,9 @@ map("n", "<leader>kdl", "<cmd>DoxLic<CR>", { desc = "DoxLic", remap = true })
 map("n", "<leader>kdu", "<cmd>DoxUndoc<CR>", { desc = "DoxUndoc", remap = true })
 map("n", "<leader>kdb", "<cmd>DoxBlock<CR>", { desc = "DoxBlock", remap = true })
 
+--Markdown预览
+map("n", "<leader>km", "<cmd>MarkdownPreviewToggle<CR>", { desc = "MarkdownPreview", remap = true })
+
 --bin文件
 wk.register({
   ["<leader>kb"] = {

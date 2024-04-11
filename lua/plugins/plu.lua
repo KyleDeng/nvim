@@ -22,6 +22,16 @@ return {
     "APZelos/blamer.nvim",
   },
   {
+    -- Markdown 预览
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
     -- 智能缩进
     "nmac427/guess-indent.nvim",
     opts = {

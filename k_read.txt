@@ -31,6 +31,9 @@ lsp和coc选择python插件的时候选择pyls
 (sudo apt update; sudo apt install python3.8-venv)
 
 当切换了主题后，就不能正常使用选词高亮的功能
+需要在这个地方配置默认主题（希望后面可以解决这个问题）
+~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/config/init.lua : 10
+改成 colorscheme = "everforest",
 
 为了能够使用关闭其他buffer功能，需要改动以下文件
 ~/.local/share/nvim/lazy/bufferline.nvim/lua/bufferline.lua:169 添加
