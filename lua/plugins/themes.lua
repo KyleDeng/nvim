@@ -6,4 +6,10 @@ return {
     --   vim.cmd.colorscheme("everforest")
     -- end,
   },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  }
 }
