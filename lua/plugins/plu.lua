@@ -22,6 +22,13 @@ return {
     "APZelos/blamer.nvim",
   },
   {
+    --html emment
+    "mattn/emmet-vim",
+    keys = {
+      { "<leader>ke", "$<cmd>call emmet#expandAbbr(3, '')<cr>", desc = "<C-y>," },
+    },
+  },
+  {
     -- Markdown 预览
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
