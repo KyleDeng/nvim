@@ -25,10 +25,8 @@ end
 map({ "n", "v" }, ",p", '"*p', { desc = "Yank paste" })
 map({ "n", "v" }, ",P", '"*P', { desc = "Yank paste" })
 map({ "n", "v" }, ",y", '"*y', { desc = "Yank copy" })
-wk.register({
-  ["<leader>k"] = {
-    name = "+K setting",
-  },
+wk.add({
+  "<leader>k", group="K-setting", icon=""
 })
 map("n", "<leader>ku", "vawgu", { desc = "lower case word", remap = true }) --小写
 map("n", "<leader>kU", "vawU", { desc = "upper case word", remap = true }) --大写
@@ -37,10 +35,8 @@ map("n", "<leader>ka", "ggVG", { desc = "select all", remap = true }) --全选
 map("n", "<leader>kl", "<cmd>noh<cr><esc>", { desc = "No highlight", remap = true }) --取消高亮
 
 --Doxygen
-wk.register({
-  ["<leader>kd"] = {
-    name = "+doxygen",
-  },
+wk.add({
+  "<leader>kd", group="Doxygen", icon=""
 })
 map("n", "<leader>kdd", "<cmd>Dox<CR>", { desc = "Dox", remap = true })
 map("n", "<leader>kda", "<cmd>DoxAuthor<CR>", { desc = "DoxAuthor", remap = true })
@@ -52,27 +48,21 @@ map("n", "<leader>kdb", "<cmd>DoxBlock<CR>", { desc = "DoxBlock", remap = true }
 map("n", "<leader>km", "<cmd>MarkdownPreviewToggle<CR>", { desc = "MarkdownPreview", remap = true })
 
 --bin文件
-wk.register({
-  ["<leader>kb"] = {
-    name = "+bin",
-  },
+wk.add({
+  "<leader>kb", group="Bin", icon=""
 })
 map("n", "<leader>kbb", "<cmd>%!xxd<CR>", { desc = "2hex", remap = true }) --hex
 map("n", "<leader>kbr", "<cmd>%!xxd -r<CR>", { desc = "2bin", remap = true }) --bin
 
 --寄存器
-wk.register({
-  ["<leader>r"] = {
-    name = "+register",
-  },
+wk.add({
+  "<leader>r", group="Register", icon=""
 })
 map("n", "<leader>rr", "<cmd>reg<CR>", { desc = "all reg", remap = true })
 
 --跳转
-wk.register({
-  ["<leader>j"] = {
-    name = "+jump",
-  },
+wk.add({
+  "<leader>j", group="Jump", icon=""
 })
 map("n", "<A-1>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition", remap = true })
 map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
@@ -81,10 +71,8 @@ map("n", "<leader>jj", "<C-W>s<esc>gd", { desc = "Goto definition below", remap 
 map("n", "<leader>jv", "<C-W>v<esc>gd", { desc = "Goto definition right", remap = true }) --垂直分割跳转
 
 --折叠
-wk.register({
-  ["<leader>z"] = {
-    name = "+Fold",
-  },
+wk.add({
+  "<leader>z", group="Fold", icon=""
 })
 map("n", "<leader>zm", "<cmd>set fdm=manual<CR>", { desc = "manual", remap = true }) --手动
 map("n", "<leader>zi", "<cmd>set fdm=indent<CR>", { desc = "indent", remap = true }) --缩进
@@ -93,10 +81,8 @@ map("n", "<leader>zs", "<cmd>set fdm=syntax<CR>", { desc = "syntax", remap = tru
 map("n", "<leader>zd", "<cmd>set fdm=diff<CR>", { desc = "diff", remap = true }) --差异
 
 --差异对比
-wk.register({
-  ["<leader>d"] = {
-    name = "+Diff",
-  },
+wk.add({
+  "<leader>d", group="Diff", icon=""
 })
 map("n", "<leader>dd", "<cmd>difft<CR>", { desc = "diff this", remap = true }) --选中比对文件
 map("n", "<leader>do", "<cmd>diffo<CR>", { desc = "diff off", remap = true }) --关闭比对
@@ -104,20 +90,14 @@ map("n", "<leader>dp", "dp", { desc = "diff push", remap = true }) --同步到�
 map("n", "<leader>dg", "dg", { desc = "diff get", remap = true }) --从另一个文件同步
 
 --错误检查
-wk.register({
-  ["<leader>e"] = {
-    name = "+Error",
-  },
+wk.add({
+  "<leader>e", group="Error", icon=""
 })
-wk.register({
-  ["<leader>ec"] = {
-    name = "+coc",
-  },
+wk.add({
+  "<leader>ec", group="coc", icon=""
 })
-wk.register({
-  ["<leader>el"] = {
-    name = "+lsp",
-  },
+wk.add({
+  "<leader>el", group="lsp", icon=""
 })
 map("n", "<leader>ee", "<cmd>CocEnable<cr><cmd>LspStart<cr>", { desc = "CheckEnable" })
 map("n", "<leader>ed", "<cmd>CocDisable<cr><cmd>LspStop<cr>", { desc = "CheckDisable" })
@@ -160,17 +140,13 @@ map("n", "<leader>fy", "<cmd>echo expand('%:p')<CR>", { desc = "Show file path" 
 map("n", "<leader>fY", "<cmd>let @+ = expand('%:p')<CR>", { desc = "Show file path" })
 
 --align
-wk.register({
-  ["<leader>a"] = {
-    name = "+align",
-  },
+wk.add({
+  {"<leader>a", group="Align", icon="󱇂"}
 })
 
 --outline
-wk.register({
-  ["<leader>o"] = {
-    name = "+outline",
-  },
+wk.add({
+  {"<leader>o", group="Outline", icon=""}
 })
 map("n", "<leader>oo", ":SymbolsOutline<CR>", { desc = "SymbolsOutline" })
 map("n", "<leader>oc", "<cmd>CocOutline<cr>", { desc = "Coc Outline" })
