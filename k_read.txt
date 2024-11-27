@@ -52,3 +52,6 @@ function M.pin()
 end
 
 在项目中使用搜索功能，会因为.gitignore文件被限制，可以创建【.ignore】文件，使用【!/components】语法规避。
+
+snippets使用(不清楚为什么不能clone main分支)
+cd /home/huatuo/.local/share/nvim/lazy/friendly-snippets; git checkout main

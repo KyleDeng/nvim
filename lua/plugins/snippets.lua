@@ -1,0 +1,8 @@
+
+return {
+  {
+    "KyleDeng/friendly-snippets",
+  }
+}
+;
+
