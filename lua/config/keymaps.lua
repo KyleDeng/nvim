@@ -21,6 +21,20 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+vim.api.nvim_create_user_command('BDeleteOther', function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local bufs = vim.api.nvim_list_bufs()
+    for _, buf in ipairs(bufs) do
+        if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) then
+            local buf_name = vim.api.nvim_buf_get_name(buf)
+            -- 检查是否为 NeoTree 缓冲区
+            if not string.match(buf_name, "neo%-tree") then
+                vim.api.nvim_buf_delete(buf, { force = true })
+            end
+        end
+    end
+end, {})
+
 --通用
 map({ "n", "v" }, ",p", '"*p', { desc = "Yank paste" })
 map({ "n", "v" }, ",P", '"*P', { desc = "Yank paste" })
@@ -33,6 +47,7 @@ map("n", "<leader>kU", "vawU", { desc = "upper case word", remap = true }) --大
 map("n", "<leader>kr", "<cmd>e!<CR>", { desc = "refresh", remap = true }) --刷新
 map("n", "<leader>ka", "ggVG", { desc = "select all", remap = true }) --全选
 map("n", "<leader>kl", "<cmd>noh<cr><esc>", { desc = "No highlight", remap = true }) --取消高亮
+map({"n", "v"}, "<leader>ks", ":Rayso<cr>", { desc = "Code Image", remap = true }) --代码图片
 
 --Doxygen
 wk.add({
@@ -128,12 +143,9 @@ end
 map("n", "<leader>bn", ":enew<CR>", { desc = "New empty buffer" }) --新建空buffer
 map("n", ",,", ":BufferLinePick<CR>", { desc = "Pick buffer" }) --选择buffer
 map("n", ",<tab>", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" }) --选择上一个使用的buffer
-map(
-  "n",
-  "<leader>bq",
-  "<cmd>BufferLinePin<cr><cmd>BufferLineGroupClose ungrouped<cr>",
-  { desc = "Pin and close other" }
-) --quiet模式
+map("n", "<A-h>", ":BufferLineMovePrev<cr>", { desc = "Buffer move prev" })
+map("n", "<A-l>", ":BufferLineMoveNext<cr>", { desc = "Buffer move next" })
+map("n", ",q", ":BDeleteOther<cr>", { desc = "Buffer close other" })
 
 --文件路径
 map("n", "<leader>fy", "<cmd>echo expand('%:p')<CR>", { desc = "Show file path" })
