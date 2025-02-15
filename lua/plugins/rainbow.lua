@@ -1,8 +1,7 @@
 return {
   {
     -- 彩虹括号
-    -- "p00f/nvim-ts-rainbow",
-    "HiPhish/nvim-ts-rainbow2",
+    "HiPhish/rainbow-delimiters.nvim",
   },
   {
     "nvim-treesitter/nvim-treesitter",
