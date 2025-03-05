@@ -79,7 +79,7 @@ map("n", "<leader>rr", "<cmd>reg<CR>", { desc = "all reg", remap = true })
 wk.add({
   "<leader>j", group="Jump", icon=""
 })
-map("n", "<A-1>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition", remap = true })
+map("n", "<A-1>", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition", remap = true })
 map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
 map("n", "<A-3>", "<C-i>", { desc = "Goto Forward", remap = true })
 map("n", "<leader>jj", "<C-W>s<esc>gd", { desc = "Goto definition below", remap = true }) --水平分割跳转
