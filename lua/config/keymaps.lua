@@ -80,8 +80,8 @@ wk.add({
   "<leader>j", group="Jump", icon=""
 })
 map("n", "<A-1>", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition", remap = true })
-map("n", "<A-2>", "<C-o>", { desc = "Goto Back", remap = true })
-map("n", "<A-3>", "<C-i>", { desc = "Goto Forward", remap = true })
+map("n", "<A-Left>", "<C-o>", { desc = "Goto Back", remap = true })
+map("n", "<A-Right>", "<C-i>", { desc = "Goto Forward", remap = true })
 map("n", "<leader>jj", "<C-W>s<esc>gd", { desc = "Goto definition below", remap = true }) --水平分割跳转
 map("n", "<leader>jv", "<C-W>v<esc>gd", { desc = "Goto definition right", remap = true }) --垂直分割跳转
 
