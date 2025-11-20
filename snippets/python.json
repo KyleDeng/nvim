@@ -1,0 +1,90 @@
+{
+  "Python Main": {
+    "prefix": "ifmain",
+    "body": [
+      "def main():",
+      "    ${1:pass}",
+      "",
+      "",
+      "if __name__ == '__main__':",
+      "    main()"
+    ],
+    "description": "Python main function"
+  },
+  "Python Class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName}:",
+      "    \"\"\"${2:Class description}\"\"\"",
+      "    ",
+      "    def __init__(self${3:, params}):",
+      "        ${4:pass}",
+      "    ",
+      "    def ${5:method_name}(self${6:, params}):",
+      "        ${7:pass}"
+    ],
+    "description": "Python class with init and method"
+  },
+  "Python Function": {
+    "prefix": "def",
+    "body": [
+      "def ${1:function_name}(${2:params}):",
+      "    \"\"\"${3:Function description}\"\"\"",
+      "    ${4:pass}",
+      "    return ${5:None}"
+    ],
+    "description": "Python function with docstring"
+  },
+  "Python Import": {
+    "prefix": "imp",
+    "body": [
+      "from ${1:module} import ${2:name}"
+    ],
+    "description": "Import statement"
+  },
+  "Python List Comprehension": {
+    "prefix": "lc",
+    "body": [
+      "[${1:expr} for ${2:item} in ${3:iterable}${4: if ${5:condition}}]"
+    ],
+    "description": "List comprehension"
+  },
+  "Python Debug Print": {
+    "prefix": "pp",
+    "body": [
+      "print(f\"DEBUG: ${1:variable} = {${1:variable}}\")"
+    ],
+    "description": "Debug print with f-string"
+  },
+  "#enc2": {
+      "prefix": "#enc2",
+      "body": [
+          "!/usr/bin/env python",
+          "# -*- coding=utf-8 -*-",
+          ""
+      ],
+      "description": "encoding python2"
+  },
+  "#enc3": {
+      "prefix": "#enc3",
+      "body": [
+          "!/usr/bin/env python3",
+          "# coding=utf-8",
+          ""
+      ],
+      "description": "encoding python3"
+  },
+  "main": {
+      "prefix": "main",
+      "body": [
+          "def main():",
+          "\tprint(\"Hello World!\")",
+          "\tpass",
+          "",
+          "",
+          "if __name__ == \"__main__\":",
+          "\t:main()"
+      ],
+      "description": "Execute code if the file is executed directly"
+  }
+}

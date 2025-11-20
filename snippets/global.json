@@ -1,0 +1,55 @@
+{
+  "Print to console": {
+    "prefix": "log",
+    "body": [
+      "console.log('$1');",
+      "$2"
+    ],
+    "description": "Log output to console"
+  },
+  "React Functional Component": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $2",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Create a React functional component"
+  },
+  "TODO Comment": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: ${1:description} - ${2:$USER} ${3:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE}"
+    ],
+    "description": "Add a TODO comment"
+  },
+  "Try Catch Block": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "  $1",
+      "} catch (${2:error}) {",
+      "  console.error(${2:error});",
+      "  $3",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+  "Async Function": {
+    "prefix": "afn",
+    "body": [
+      "const ${1:functionName} = async (${2:params}) => {",
+      "  $3",
+      "};"
+    ],
+    "description": "Create an async arrow function"
+  }
+}

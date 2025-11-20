@@ -7,9 +7,79 @@ return {
         enabled = false
       },
     },
+    keys = {
+      -- Override the default <leader>fe binding from snacks
+      { "<leader>fe", false },
+      { "<leader>fE", false },
+      { "<leader>e", false },
+      { "<leader>E", false },
+    }
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    -- Load neo-tree when opening a directory
+    lazy = false,
+    priority = 1000,
+    -- Auto open neo-tree when opening a directory
+    init = function()
+      -- Disable netrw
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
+      -- Open neo-tree when opening a directory
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function(data)
+          -- Check if we opened a directory
+          local directory = vim.fn.isdirectory(data.file) == 1
+
+          if not directory then
+            return
+          end
+
+          -- Create a new empty buffer
+          vim.cmd.enew()
+
+          -- Wipe the directory buffer
+          vim.api.nvim_buf_delete(data.buf, { force = true })
+
+          -- Open neo-tree
+          require("neo-tree.command").execute({
+            dir = data.file,
+            position = "left",
+          })
+        end,
+      })
+    end,
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.fn.expand("%:p:h") })
+        end,
+        desc = "Explorer NeoTree (file dir)",
+      },
+      -- {
+      --   "<leader>ge",
+      --   function()
+      --     require("neo-tree.command").execute({ source = "git_status", toggle = true })
+      --   end,
+      --   desc = "Git Explorer",
+      -- },
+      -- {
+      --   "<leader>be",
+      --   function()
+      --     require("neo-tree.command").execute({ source = "buffers", toggle = true })
+      --   end,
+      --   desc = "Buffer Explorer",
+      -- },
+    },
     opts = {
       default_component_configs = { git_status = { symbols = { unstaged = "󱈸" } } },
       window = { width = 30, mappings = { ["l"] = "open", ["h"] = "close_node" } },

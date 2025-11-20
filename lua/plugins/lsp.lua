@@ -12,6 +12,7 @@ return {
         -- "cssls",             -- CSS
         "pylsp",             -- Python
         "clangd",            -- C/C++
+        "jsonls",            -- json
         -- ... 添加您需要的其他服务器名称
       },
     },

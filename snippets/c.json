@@ -1,0 +1,508 @@
+{
+  "C/C++ Main Function": {
+    "prefix": "main",
+    "body": [
+      "#include <stdio.h>",
+      "",
+      "int main(int argc, char *argv[]) {",
+      "    printf(\"Hello world!\\n\");",
+      "    $1",
+      "",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Main function with arguments"
+  },
+  "C++ Main Function": {
+    "prefix": "mainpp",
+    "body": [
+      "#include <iostream>",
+      "",
+      "int main() {",
+      "    $1",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ main function"
+  },
+  "Include Guard": {
+    "prefix": "guard",
+    "body": [
+      "#ifndef ${1:${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H}",
+      "#define ${1:${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H}",
+      "",
+      "$2",
+      "",
+      "#endif // ${1:${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H}"
+    ],
+    "description": "Header include guard"
+  },
+  "Pragma Once": {
+    "prefix": "pragma",
+    "body": [
+      "#pragma once",
+      "",
+      "$1"
+    ],
+    "description": "Pragma once directive"
+  },
+  "C++ Class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "public:",
+      "    ${1:ClassName}();",
+      "    ~${1:ClassName}();",
+      "",
+      "private:",
+      "    $2",
+      "};"
+    ],
+    "description": "C++ class with constructor and destructor"
+  },
+  "C++ Class with Header": {
+    "prefix": "classh",
+    "body": [
+      "#pragma once",
+      "",
+      "class ${1:ClassName} {",
+      "public:",
+      "    ${1:ClassName}();",
+      "    ${1:ClassName}(const ${1:ClassName}& other);",
+      "    ${1:ClassName}& operator=(const ${1:ClassName}& other);",
+      "    ~${1:ClassName}();",
+      "",
+      "    $2",
+      "",
+      "private:",
+      "    $3",
+      "};"
+    ],
+    "description": "C++ class with copy constructor and assignment operator"
+  },
+  "C Struct": {
+    "prefix": "struct",
+    "body": [
+      "typedef struct ${1:StructName} {",
+      "    $2",
+      "} ${1:StructName};"
+    ],
+    "description": "C struct definition"
+  },
+  "C++ Struct": {
+    "prefix": "structpp",
+    "body": [
+      "struct ${1:StructName} {",
+      "    $2",
+      "};"
+    ],
+    "description": "C++ struct definition"
+  },
+  "Enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:EnumName} {",
+      "    ${2:ENUM_VALUE1},",
+      "    ${3:ENUM_VALUE2}",
+      "};"
+    ],
+    "description": "Enum definition"
+  },
+  "Enum Class": {
+    "prefix": "enumclass",
+    "body": [
+      "enum class ${1:EnumName} {",
+      "    ${2:Value1},",
+      "    ${3:Value2}",
+      "};"
+    ],
+    "description": "C++ enum class"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (${1:int} ${2:i} = ${3:0}; ${2:i} < ${4:length}; ${2:i}++) {",
+      "    $5",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "For Loop Reverse": {
+    "prefix": "forr",
+    "body": [
+      "for (${1:int} ${2:i} = ${3:length - 1}; ${2:i} >= 0; ${2:i}--) {",
+      "    $4",
+      "}"
+    ],
+    "description": "Reverse for loop"
+  },
+  "Range-based For Loop": {
+    "prefix": "fore",
+    "body": [
+      "for (${1:auto}& ${2:element} : ${3:container}) {",
+      "    $4",
+      "}"
+    ],
+    "description": "C++11 range-based for loop"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) {",
+      "    $2",
+      "}"
+    ],
+    "description": "While loop"
+  },
+  "Do-While Loop": {
+    "prefix": "dowhile",
+    "body": [
+      "do {",
+      "    $1",
+      "} while (${2:condition});"
+    ],
+    "description": "Do-while loop"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "    $2",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ife",
+    "body": [
+      "if (${1:condition}) {",
+      "    $2",
+      "} else {",
+      "    $3",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:expression}) {",
+      "    case ${2:value1}:",
+      "        $3",
+      "        break;",
+      "    case ${4:value2}:",
+      "        $5",
+      "        break;",
+      "    default:",
+      "        $6",
+      "        break;",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "${1:void} ${2:functionName}(${3:parameters}) {",
+      "    $4",
+      "}"
+    ],
+    "description": "Function definition"
+  },
+  "Function Prototype": {
+    "prefix": "funcp",
+    "body": [
+      "${1:void} ${2:functionName}(${3:parameters});"
+    ],
+    "description": "Function prototype"
+  },
+  "Printf": {
+    "prefix": "pf",
+    "body": [
+      "printf(\"${1:%s}\\n\", ${2:variable});"
+    ],
+    "description": "Printf statement"
+  },
+  "Scanf": {
+    "prefix": "sf",
+    "body": [
+      "scanf(\"${1:%d}\", &${2:variable});"
+    ],
+    "description": "Scanf statement"
+  },
+  "Cout": {
+    "prefix": "cout",
+    "body": [
+      "std::cout << ${1:\"message\"} << std::endl;"
+    ],
+    "description": "C++ cout statement"
+  },
+  "Cin": {
+    "prefix": "cin",
+    "body": [
+      "std::cin >> ${1:variable};"
+    ],
+    "description": "C++ cin statement"
+  },
+  "Malloc": {
+    "prefix": "malloc",
+    "body": [
+      "${1:type}* ${2:ptr} = (${1:type}*)malloc(${3:size} * sizeof(${1:type}));",
+      "if (${2:ptr} == NULL) {",
+      "    ${4:// Handle allocation failure}",
+      "}"
+    ],
+    "description": "Dynamic memory allocation"
+  },
+  "Calloc": {
+    "prefix": "calloc",
+    "body": [
+      "${1:type}* ${2:ptr} = (${1:type}*)calloc(${3:count}, sizeof(${1:type}));",
+      "if (${2:ptr} == NULL) {",
+      "    ${4:// Handle allocation failure}",
+      "}"
+    ],
+    "description": "Dynamic memory allocation with zero initialization"
+  },
+  "New": {
+    "prefix": "new",
+    "body": [
+      "${1:type}* ${2:ptr} = new ${1:type}${3:()};"
+    ],
+    "description": "C++ new operator"
+  },
+  "New Array": {
+    "prefix": "newa",
+    "body": [
+      "${1:type}* ${2:ptr} = new ${1:type}[${3:size}];"
+    ],
+    "description": "C++ new array"
+  },
+  "Delete": {
+    "prefix": "delete",
+    "body": [
+      "delete ${1:ptr};",
+      "${1:ptr} = nullptr;"
+    ],
+    "description": "C++ delete operator"
+  },
+  "Delete Array": {
+    "prefix": "deletea",
+    "body": [
+      "delete[] ${1:ptr};",
+      "${1:ptr} = nullptr;"
+    ],
+    "description": "C++ delete array"
+  },
+  "Try-Catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "    $1",
+      "} catch (${2:const std::exception& e}) {",
+      "    ${3:std::cerr << e.what() << std::endl;}",
+      "}"
+    ],
+    "description": "C++ try-catch block"
+  },
+  "Namespace": {
+    "prefix": "namespace",
+    "body": [
+      "namespace ${1:name} {",
+      "    $2",
+      "} // namespace ${1:name}"
+    ],
+    "description": "Namespace definition"
+  },
+  "Template Function": {
+    "prefix": "templatef",
+    "body": [
+      "template <typename ${1:T}>",
+      "${2:T} ${3:functionName}(${4:T param}) {",
+      "    $5",
+      "}"
+    ],
+    "description": "Template function"
+  },
+  "Template Class": {
+    "prefix": "templatec",
+    "body": [
+      "template <typename ${1:T}>",
+      "class ${2:ClassName} {",
+      "public:",
+      "    ${2:ClassName}();",
+      "    ~${2:ClassName}();",
+      "",
+      "private:",
+      "    ${1:T} ${3:member};",
+      "};"
+    ],
+    "description": "Template class"
+  },
+  "Vector": {
+    "prefix": "vector",
+    "body": [
+      "std::vector<${1:int}> ${2:vec};"
+    ],
+    "description": "STL vector declaration"
+  },
+  "Map": {
+    "prefix": "map",
+    "body": [
+      "std::map<${1:int}, ${2:std::string}> ${3:myMap};"
+    ],
+    "description": "STL map declaration"
+  },
+  "Unordered Map": {
+    "prefix": "umap",
+    "body": [
+      "std::unordered_map<${1:int}, ${2:std::string}> ${3:myMap};"
+    ],
+    "description": "STL unordered_map declaration"
+  },
+  "Set": {
+    "prefix": "set",
+    "body": [
+      "std::set<${1:int}> ${2:mySet};"
+    ],
+    "description": "STL set declaration"
+  },
+  "Smart Pointer - Unique": {
+    "prefix": "unique",
+    "body": [
+      "std::unique_ptr<${1:Type}> ${2:ptr} = std::make_unique<${1:Type}>(${3:args});"
+    ],
+    "description": "C++ unique_ptr"
+  },
+  "Smart Pointer - Shared": {
+    "prefix": "shared",
+    "body": [
+      "std::shared_ptr<${1:Type}> ${2:ptr} = std::make_shared<${1:Type}>(${3:args});"
+    ],
+    "description": "C++ shared_ptr"
+  },
+  "Lambda Function": {
+    "prefix": "lambda",
+    "body": [
+      "auto ${1:lambda} = [${2:&}](${3:params}) ${4:-> returnType }{",
+      "    $5",
+      "};"
+    ],
+    "description": "C++ lambda function"
+  },
+  "Assert": {
+    "prefix": "assert",
+    "body": [
+      "assert(${1:condition} && \"${2:Error message}\");"
+    ],
+    "description": "Assert statement"
+  },
+  "Header Comment": {
+    "prefix": "header",
+    "body": [
+      "/**",
+      " * @file ${TM_FILENAME}",
+      " * @author ${1:Your Name}",
+      " * @brief ${2:Brief description}",
+      " * @date ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      " * ",
+      " * ${3:Detailed description}",
+      " */"
+    ],
+    "description": "File header comment"
+  },
+  "Function Comment": {
+    "prefix": "fcomment",
+    "body": [
+      "/**",
+      " * @brief ${1:Brief description}",
+      " * ",
+      " * @param ${2:param1} ${3:Description}",
+      " * @return ${4:Return description}",
+      " */"
+    ],
+    "description": "Function documentation comment"
+  },
+  "TODO Comment": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: ${1:description} - ${2:$USER} ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"
+    ],
+    "description": "TODO comment"
+  },
+  "Include STL": {
+    "prefix": "stl",
+    "body": [
+      "#include <iostream>",
+      "#include <vector>",
+      "#include <string>",
+      "#include <algorithm>",
+      "#include <map>",
+      "#include <set>",
+      "#include <queue>",
+      "#include <stack>",
+      "#include <memory>",
+      "",
+      "using namespace std;"
+    ],
+    "description": "Common STL includes"
+  },
+  "Competitive Programming Template": {
+    "prefix": "cp",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "",
+      "#define ll long long",
+      "#define pb push_back",
+      "#define mp make_pair",
+      "#define fi first",
+      "#define se second",
+      "#define all(x) x.begin(), x.end()",
+      "#define rep(i, n) for(int i = 0; i < (n); ++i)",
+      "#define repi(i, a, b) for(int i = (a); i <= (b); ++i)",
+      "#define fast ios_base::sync_with_stdio(false); cin.tie(NULL);",
+      "",
+      "int main() {",
+      "    fast;",
+      "    $1",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Competitive programming template"
+  },
+  "Starter Template": {
+      "prefix": "mainst",
+      "body": [
+          "#include <stdio.h>",
+          "#include <stdlib.h>",
+          "",
+          "/***********************************************************",
+          "************************macro define************************",
+          "***********************************************************/",
+          "",
+          "/***********************************************************",
+          "***********************typedef define***********************",
+          "***********************************************************/",
+          "",
+          "/***********************************************************",
+          "********************function declaration********************",
+          "***********************************************************/",
+          "",
+          "/***********************************************************",
+          "***********************variable define**********************",
+          "***********************************************************/",
+          "",
+          "/***********************************************************",
+          "***********************function define**********************",
+          "***********************************************************/",
+          "int main(int argc, char *argv[])",
+          "{$0",
+          "\tprintf(\"Hello World!\\n\");",
+          "",
+          "\treturn 0;",
+          "}"
+      ],
+      "description": "Standard starter template for a tiny C program"
+  }
+}
